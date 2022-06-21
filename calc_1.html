@@ -1,0 +1,162 @@
+<!-- 주제 : div, span 요소 및 CSS를 활용하여 달력 만들기 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calc</title>
+    <!-- css 적용 -->
+    <style>
+      /* 폰트 적용 */
+      @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+      @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+      span{
+        font-family: 'Jeju Gothic', sans-serif;
+        }
+      div{
+        font-family: 'Hanna', sans-serif;
+      }
+      
+      .calc {padding: 30px;}
+      
+    /* 인라인 블록 요소 사용 */
+      span {
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #4d4d4d;
+      }
+      span.day_orange {background-color: #e9a51c;}
+
+      .week_1 > div {
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        background-color: white;
+      }
+    
+      .week_1 > .day {background-color: #7dbccc;}
+      
+      .week_2 > *{
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        background-color: #7dbccc;
+      }
+      
+      .week_3 > *{
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        background-color: #7dbccc;
+      }
+      
+      .week_4 > *{
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        background-color: #7dbccc;
+      }
+      
+      .week_5 > *{
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        background-color: #7dbccc;
+      }
+      
+      /* 가상 요소 선택자(뒤에 콘텐츠 삽입 after)를 사용해서 
+      날짜 뒤에 "포스코" 라는 컨텐츠가 삽입 되도록 만들기 */
+      #day_posco::after {
+        content: "포스코";
+        margin: 5px;
+        padding: 0px 3px;
+        background-color: #d7e110d0;
+      }
+      
+      /* 따로 지정해둔 일요일 배색 */
+      .week_1 #sun {background-color: #e09eb2;}
+      
+      /* 1주 일요일 배색 */
+      .week .sun {background-color: #e09eb2;}
+
+      /* 10일(일요일)부터 어둡게 배색 */
+      .week #week_sun {background-color: #52115f;}
+
+      /* 2주차의 짝수 번째 div 박스(5, 7, 9) 번갈아 가며 배색*/
+      .week_2 div:nth-child(2n) {background-color: #4a77e1b7;}
+
+      /* 4주차의 짝수 번째 div 박스(19, 21, 23) 번갈아 가며 배색 */
+      .week_4 div:nth-child(2n) {background-color: #4a77e1b7;}
+
+      .week_1 #day_posco {background-color: #d7e110d0;}
+      .week .mday {background-color: #3fb6d4;}
+    </style>
+  </head>
+
+  <body> 
+    <div class="calc">
+      <div class="days">
+        <span class="day_grey">월</span><!-- 
+        --><span class="day_orange">화</span><!-- 
+       --><span class="day_grey">수</span><!--
+        --><span class="day_orange">목</span><!--
+        --><span class="day_grey">금</span><!--
+        --><span class="day_orange">토</span><!--
+        --><span class="day_grey">일</span>
+      </div>
+      <div class="week">
+        <div class="week_1">
+          <div>&nbsp;</div><!--
+        --><div>&nbsp;</div><!--
+        --><div>&nbsp;</div><!--
+        --><div>&nbsp;</div><!--
+        --><div class="posco_day" id="day_posco">1</div><!--
+        --><div class="day">2</div><!--
+        --><div class="day" id="sun">3</div> <!-- 일요일 배색을 위해 따로 id 지정 -->
+        </div>
+        <div class="week_2">
+          <div class="mday">4</div><!--
+        --><div class="day">5</div><!--
+        --><div class="mday">6</div><!--
+        --><div class="day">7</div><!--
+        --><div class="mday">8</div><!--
+        --><div class="mday">9</div><!--
+        --><div class="sun" id="week_sun">10</div>
+        </div>
+        <div class="week_3">
+          <div class="mday">11</div><!--
+        --><div class="day">12</div><!--
+        --><div class="mday">13</div><!--
+        --><div class="day">14</div><!--
+        --><div class="mday">15</div><!--
+        --><div class="day">16</div><!--
+        --><div class="sun">17</div>
+        </div>
+        <div class="week_4">
+          <div class="mday">18</div><!--
+        --><div class="day">19</div><!--
+        --><div class="mday">20</div><!--
+        --><div class="day">21</div><!--
+        --><div class="mday">22</div><!--
+        --><div class="day">23</div><!--
+        --><div class="sun" id="week_sun">24</div>
+        </div>
+        <div class="week_5">
+          <div class="mday">25</div><!--
+        --><div class="day">26</div><!--
+        --><div class="mday">27</div><!--
+        --><div class="day">28</div><!--
+        --><div class="mday">29</div><!--
+        --><div class="day">30</div><!--
+        --><div class="sun">31</div>
+        </div>
+      </div>
+    </div>
+</div>
+  </body>
+</html>
